@@ -1,0 +1,63 @@
+<!doctype html public "-//w3c//dtd html 4.01//en" "http://www.w3.org/tr/html4/strict.dtd">
+<Link rel=stylesheet href="gameStyle.css" type="text/css">
+<html>
+	<head>
+		<title>Play With Numbers</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Dina Profile">
+		<meta name="keywords" content="html,dina,test,profile">
+		<meta name="author" content="Dina Ghounem"> 
+		
+		<script>
+			var trueCounter=0;
+			var allCounter=0;
+			
+			function startGame()
+			{
+				st_game = setInterval(displayNum,1000);
+			}
+			function myNumber(event)
+			{
+				var x = event.keyCode;
+				var y = String.fromCharCode(x);
+				
+				if(y == num)
+					trueCounter++;
+			}
+			function displayNum()
+			{
+				num = Math.floor((Math.random() * 9) + 1);
+				document.getElementById("num").innerHTML = num;
+				allCounter++;
+			}
+			function stopGame()
+			{
+				clearInterval(st_game);
+				document.getElementById("all").innerHTML =trueCounter;
+				document.getElementById("correct").innerHTML =allCounter;
+			}
+   
+		</script>
+		</head>
+	
+	<body class="game" onkeypress="myNumber(event)">	
+		<center>
+			<div id="circle" >
+				<div id="background-wrap">
+					<div id="num" class="bubble x1"></div>
+				</div>
+			</div>
+			
+			<br>
+			
+			<textarea  id="all" rows="1" cols="2" disabled></textarea>
+			<label> Of:</label>
+			<textarea  id="correct" rows="1" cols="2"  disabled></textarea>
+			
+			<br><br><br>
+			<input type="button" onclick="startGame()" value="Start Game">
+			<input type="button" onclick="stopGame()" value="End Game">
+		</center>
+	</body>
+
+</html>
